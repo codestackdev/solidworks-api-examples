@@ -49,23 +49,24 @@
   <ItemGroup>
     <Reference Include="CodeStack.SwEx.AddIn, Version=0.2.2.0, Culture=neutral, PublicKeyToken=a46023996d4724e7, processorArchitecture=MSIL">
       <HintPath>packages\CodeStack.SwEx.AddIn.0.2.2-beta\lib\net40\CodeStack.SwEx.AddIn.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="SolidWorks.Interop.sldworks, Version=26.2.0.63, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
       <HintPath>packages\CodeStack.SwEx.AddIn.0.2.2-beta\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolidWorks.Interop.swconst, Version=26.2.0.63, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
       <HintPath>packages\CodeStack.SwEx.AddIn.0.2.2-beta\lib\net40\SolidWorks.Interop.swconst.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolidWorks.Interop.swpublished, Version=26.2.0.63, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
       <HintPath>packages\CodeStack.SwEx.AddIn.0.2.2-beta\lib\net40\SolidWorks.Interop.swpublished.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolidWorksTools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd18593873b4686d, processorArchitecture=MSIL">
       <HintPath>packages\CodeStack.SwEx.AddIn.0.2.2-beta\lib\net40\SolidWorksTools.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -123,9 +124,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\export.png" />
   </ItemGroup>
   <ItemGroup>
