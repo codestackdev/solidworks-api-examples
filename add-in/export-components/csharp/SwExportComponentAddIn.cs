@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 namespace CodeStack.SwEx.AddIn.Examples.SwExportComponent
 {
     [AutoRegister("Export Components (C#)", "Exports selected component to neutral format", true)]
+    [Guid("1440137A-4A88-433F-92CB-4120BBBD1F8B")]
     [ComVisible(true)]
     public class SwExportComponentAddIn : SwAddInEx
     {

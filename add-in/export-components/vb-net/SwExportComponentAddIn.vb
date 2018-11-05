@@ -5,6 +5,7 @@ Imports System.IO
 Imports System.Runtime.InteropServices
 
 <AutoRegister("Export Components (VB.NET)", "Exports selected component to neutral format", True)>
+<Guid("5A40017C-81AB-4A1F-AD03-35B02CDD0CA1")>
 <ComVisible(True)>
 Public Class SwExportComponentAddIn
     Inherits SwAddInEx
