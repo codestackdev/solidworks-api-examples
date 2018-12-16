@@ -18,3 +18,10 @@ Components are saved into the *Export* folder in the root assembly location and 
 Add-in which allows inserting similar notes multipe times. Note can be inserted relative to the drawing sheet coordintae system or relative to the selected object coordinate.
 
 User needs to specify the note text, size and offset in the property manager page. These options are preserved across the session.
+
+## Convert Solid Body To Surface Body
+[![VB.NET Source Code](https://img.shields.io/badge/src-VB.NET-blue.svg)](https://github.com/codestack-net-dev/swex-examples/tree/master/macro-feature\convert-solid-to-surface\vb-net)
+
+Add-in allows converting selected solid body or bodies into the corresponding surface bodies.
+
+Add-in utilizes macro feature so the converted body preserves parametric functionality.
