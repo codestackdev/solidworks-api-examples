@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceIndexer", "FaceIndexer\FaceIndexer.csproj", "{49F79F78-CA0E-477F-A936-7ED9B073B543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandAlone", "StandAlone\StandAlone.csproj", "{F3D31DA0-8492-4599-A858-767E0F3A8844}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49F79F78-CA0E-477F-A936-7ED9B073B543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F79F78-CA0E-477F-A936-7ED9B073B543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F79F78-CA0E-477F-A936-7ED9B073B543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F79F78-CA0E-477F-A936-7ED9B073B543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3D31DA0-8492-4599-A858-767E0F3A8844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3D31DA0-8492-4599-A858-767E0F3A8844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3D31DA0-8492-4599-A858-767E0F3A8844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3D31DA0-8492-4599-A858-767E0F3A8844}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
