@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryHelperAddIn", "GeometryHelperAddIn\GeometryHelperAddIn.csproj", "{2DD2880F-304A-4152-9884-56BEE4E5895E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryHelperApiObject", "GeometryHelperApiObject\GeometryHelperApiObject.csproj", "{7F4437E8-B2DB-47D7-9177-B67CB33AA646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandAlone", "StandAlone\StandAlone.csproj", "{EB7E5E99-930D-4EE9-9A02-3F1C6B72E538}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DD2880F-304A-4152-9884-56BEE4E5895E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD2880F-304A-4152-9884-56BEE4E5895E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD2880F-304A-4152-9884-56BEE4E5895E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD2880F-304A-4152-9884-56BEE4E5895E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F4437E8-B2DB-47D7-9177-B67CB33AA646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F4437E8-B2DB-47D7-9177-B67CB33AA646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F4437E8-B2DB-47D7-9177-B67CB33AA646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F4437E8-B2DB-47D7-9177-B67CB33AA646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB7E5E99-930D-4EE9-9A02-3F1C6B72E538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB7E5E99-930D-4EE9-9A02-3F1C6B72E538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB7E5E99-930D-4EE9-9A02-3F1C6B72E538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB7E5E99-930D-4EE9-9A02-3F1C6B72E538}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

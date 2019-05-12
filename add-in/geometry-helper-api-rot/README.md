@@ -1,0 +1,1 @@
+Refer [Call functions of SOLIDWORKS add-in via Running Objects Table (ROT)](https://www.codestack.net/solidworks-api/getting-started/inter-process-communication/invoke-add-in-functions/via-rot/) for more information.
