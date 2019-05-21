@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="CodeStack.SwEx.AddIn.Examples.IssuesManager.IssuesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CodeStack.SwEx.AddIn.Examples.IssuesManager"
+             mc:Ignorable="d" 
+			 d:DataContext="{x:Type local:IssuesVM}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<ListView ItemsSource="{Binding Path=Issues}" SelectedItem="{Binding Path=SelectedIssueId}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding StringFormat=Issue #{0}}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+		<Grid Grid.Row="1" DataContext="{Binding Path=ActiveIssue}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			
+			<TextBlock Grid.Row="0" Grid.Column="0" Text="Summary:"/>
+			<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=Summary, UpdateSourceTrigger=PropertyChanged}"/>
+
+			<TextBlock Grid.Row="1" Grid.Column="0" Text="Description:"/>
+			<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"/>
+			
+		</Grid>
+		<Button Grid.Row="2" Command="{Binding Path=CreateNewIssueCommand}" HorizontalAlignment="Center" Margin="5">
+			<TextBlock Text="Create New Issue" Margin="5"/>
+		</Button>
+	</Grid>
+</UserControl>

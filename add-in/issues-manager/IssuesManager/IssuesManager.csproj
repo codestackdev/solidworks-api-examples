@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5D4B99A-2FC6-4ECA-B087-8144F479FA4B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeStack.SwEx.AddIn.Examples.IssuesManager</RootNamespace>
+    <AssemblyName>CodeStack.SwEx.AddIn.Examples.IssuesManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CodeStack.SwEx.AddIn, Version=0.7.0.0, Culture=neutral, PublicKeyToken=a46023996d4724e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.AddIn.0.7.0\lib\net40\CodeStack.SwEx.AddIn.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeStack.SwEx.Common, Version=0.9.6.0, Culture=neutral, PublicKeyToken=a46023996d4724e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.6\lib\net40\CodeStack.SwEx.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SolidWorks.Interop.sldworks, Version=26.2.0.63, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.6\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst, Version=26.2.0.63, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.6\lib\net40\SolidWorks.Interop.swconst.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished, Version=26.2.0.63, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.6\lib\net40\SolidWorks.Interop.swpublished.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorksTools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd18593873b4686d, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.6\lib\net40\SolidWorksTools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddIn.cs" />
+    <Compile Include="Issue.cs" />
+    <Compile Include="IssuesControl.xaml.cs">
+      <DependentUpon>IssuesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IssuesControlHost.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IssuesControlHost.Designer.cs">
+      <DependentUpon>IssuesControlHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IssuesDocument.cs" />
+    <Compile Include="IssuesVM.cs" />
+    <Compile Include="IssueVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelayCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="IssuesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IssuesControlHost.resx">
+      <DependentUpon>IssuesControlHost.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
