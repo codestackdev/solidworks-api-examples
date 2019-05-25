@@ -1,4 +1,4 @@
-﻿namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
+﻿namespace CodeStack.SwEx.AddIn.Examples.IssuesManager.Views
 {
     partial class IssuesControlHost
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ctrlHost = new System.Windows.Forms.Integration.ElementHost();
-            this.ctrlIssues = new CodeStack.SwEx.AddIn.Examples.IssuesManager.IssuesControl();
+            this.ctrlIssues = new CodeStack.SwEx.AddIn.Examples.IssuesManager.Views.IssuesControl();
             this.SuspendLayout();
             // 
             // ctrlHost

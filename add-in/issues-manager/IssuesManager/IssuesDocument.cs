@@ -1,8 +1,18 @@
-﻿using CodeStack.SwEx.AddIn.Core;
+﻿//**********************
+//Examples for SwEx Framework
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestack-net-dev/swex-examples/blob/master/LICENSE
+//Product URL: https://www.codestack.net/labs/solidworks/swex/add-in/
+//**********************
+
+using CodeStack.SwEx.AddIn.Core;
+using CodeStack.SwEx.AddIn.Examples.IssuesManager.Models;
+using CodeStack.SwEx.AddIn.Examples.IssuesManager.ViewModels;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -11,23 +21,33 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
     public class IssuesDocument : DocumentHandler
     {
         private const string STORAGE_NAME = "_CodeStackIssuesStore_";
+        private const string ISSUES_SUB_STORAGE_NAME = "IssuesStore";
+        private const string ISSUES_SUMMARIES_STREAM_NAME = "Summaries";
 
         public event Action<IssuesVM> ShowIssues;
+        public event Action Destroyed;
 
         private IssuesVM m_IssuesVm;
-
-        public IssuesDocument()
-        {
-        }
         
         public override void OnActivate()
         {
             ShowIssues?.Invoke(m_IssuesVm);
         }
 
+        public void CreateNewIssue()
+        {
+            m_IssuesVm.CreateNewIssue();
+        }
+
+        public void RemoveActiveIssue()
+        {
+            m_IssuesVm.RemoveActiveIssue();
+        }
+
         public override void OnLoadFromStorageStore()
         {
             IEnumerable<int> issuesIds = null;
+            IssueInfo[] issueInfos = null;
 
             using (var storageHandler = Model.Access3rdPartyStorageStore(STORAGE_NAME, false))
             {
@@ -35,7 +55,22 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
                 {
                     using (var storage = storageHandler.Storage)
                     {
-                        issuesIds = storage.GetSubStreamNames().Select(n => int.Parse(n));
+                        using (var issuesStore = storage.TryOpenStorage(ISSUES_SUB_STORAGE_NAME, false))
+                        {
+                            if (issuesStore != null)
+                            {
+                                issuesIds = issuesStore.GetSubStreamNames().Select(n => int.Parse(n));
+                            }
+                        }
+
+                        using (var stream = storage.TryOpenStream(ISSUES_SUMMARIES_STREAM_NAME, false))
+                        {
+                            if (stream != null)
+                            {
+                                var ser = new DataContractSerializer(typeof(IssueInfo[]));
+                                issueInfos = ser.ReadObject(stream) as IssueInfo[];
+                            }
+                        }
                     }
                 }
             }
@@ -45,8 +80,19 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
                 issuesIds = Enumerable.Empty<int>();
             }
 
-            m_IssuesVm = new IssuesVM(issuesIds);
+            if (issueInfos == null)
+            {
+                issueInfos = new IssueInfo[0];
+            }
 
+            if (!issueInfos.Select(i => i.Id).OrderBy(i => i)
+                .SequenceEqual(issuesIds.OrderBy(i => i)))
+            {
+                throw new InvalidOperationException("Issues mismatch");
+            }
+
+            m_IssuesVm = new IssuesVM(issueInfos);
+            m_IssuesVm.Modified += OnIssuesModified;
             m_IssuesVm.LoadIssue += OnLoadIssue;
 
             if (Model.Visible)
@@ -55,18 +101,24 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
             }
         }
 
-        private Issue OnLoadIssue(int issueId)
+        private void OnIssuesModified()
         {
             Model.SetSaveFlag();
+        }
 
+        private Issue OnLoadIssue(int issueId)
+        {
             using (var storageHandler = Model.Access3rdPartyStorageStore(STORAGE_NAME, false))
             {
                 using (var storage = storageHandler.Storage)
                 {
-                    using (var stream = storage.TryOpenStream(issueId.ToString(), false))
+                    using (var issueStorage = storage.TryOpenStorage(ISSUES_SUB_STORAGE_NAME, false))
                     {
-                        var xmlSer = new XmlSerializer(typeof(Issue));
-                        return xmlSer.Deserialize(stream) as Issue;
+                        using (var stream = issueStorage.TryOpenStream(issueId.ToString(), false))
+                        {
+                            var ser = new DataContractSerializer(typeof(Issue));
+                            return ser.ReadObject(stream) as Issue;
+                        }
                     }
                 }
             }
@@ -74,23 +126,48 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
 
         public override void OnSaveToStorageStore()
         {
-            if (m_IssuesVm.EditedIssues.Any())
+            var loadedIssues = m_IssuesVm.Issues.Where(i => i.IsLoaded);
+
+            if (loadedIssues.Any(i => i.IsDeleted || i.IsDirty))
             {
                 using (var storageHandler = Model.Access3rdPartyStorageStore(STORAGE_NAME, true))
                 {
                     using (var storage = storageHandler.Storage)
                     {
-                        foreach (var issue in m_IssuesVm.EditedIssues)
+                        using (var stream = storage.TryOpenStream(ISSUES_SUMMARIES_STREAM_NAME, true))
                         {
-                            using (var stream = storage.TryOpenStream(issue.Id.ToString(), true))
+                            var ser = new DataContractSerializer(typeof(IssueInfo[]));
+                            ser.WriteObject(stream, m_IssuesVm.Issues
+                                .Select(i => i.Issue.GetInfo()).ToArray());
+                        }
+
+                        using (var issuesStore = storage.TryOpenStorage(ISSUES_SUB_STORAGE_NAME, true))
+                        {
+                            foreach (var removedIssue in loadedIssues.Where(i => i.IsDeleted))
                             {
-                                var xmlSer = new XmlSerializer(typeof(Issue));
-                                xmlSer.Serialize(stream, issue);
+                                //TODO: simplify when issue #23 is implemented
+                                issuesStore.Storage.DestroyElement(removedIssue.Id.ToString());                                
+                            }
+
+                            foreach (var modifiedIssue in loadedIssues.Where(i => !i.IsDeleted && i.IsDirty))
+                            {
+                                using (var stream = issuesStore.TryOpenStream(modifiedIssue.Id.ToString(), true))
+                                {
+                                    var ser = new DataContractSerializer(typeof(Issue));
+                                    ser.WriteObject(stream, modifiedIssue.Issue);
+                                }
                             }
                         }
                     }
                 }
             }
+
+            m_IssuesVm.FlushChanges();
+        }
+
+        public override void OnDestroy()
+        {
+            Destroyed?.Invoke();
         }
     }
 }
