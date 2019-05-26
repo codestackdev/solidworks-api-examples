@@ -47,6 +47,7 @@ Demonstration of technique to call SOLIDWORKS add-in API from stand-alone applic
 Demonstration of alternative approach to create SOLIDWORKS add-in API. Running object table (ROT) is used in this case. This technique enables the ability to call API without the need to reference SOLIDWORKS interop libraries.
 
 ## Issues Manager
-[![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestack-net-dev/swex-examples/tree/master/add-in/issues-manager)
+[![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestack-net-dev/swex-examples/tree/master/add-in/issues-manager/csharp)
+[![VB.NET Source Code](https://img.shields.io/badge/src-VB.NET-blue.svg)](https://github.com/codestack-net-dev/swex-examples/tree/master/add-in/issues-manager//vb-net)
 
 Demonstration of using of 3rd party storage store and streams to manage issues associated with documents. WPF interface is added to task pane allowing to view and edit issues.
