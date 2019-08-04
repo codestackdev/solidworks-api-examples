@@ -1,4 +1,5 @@
-﻿using CodeStack.SwEx.AddIn;
+﻿using CodeStack.ProgressHandler.Properties;
+using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Enums;
 using CodeStack.SwEx.Common.Attributes;
@@ -26,30 +27,37 @@ namespace CodeStack.ProgressHandler
         {
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
             [Title("Report Each Step")]
+            [Icon(typeof(Resources), nameof(Resources.toggle))]
             ReportEachStep,
 
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
-            [Title("No Progress Capturing (Baseline)")]
+            [Title("BL - No Progress Capturing (Baseline)")]
+            [Icon(typeof(Resources), nameof(Resources.bl))]
             NoProgress,
 
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
-            [Title("User Form In Main Thread")]
+            [Title("A - User Form In Main Thread")]
+            [Icon(typeof(Resources), nameof(Resources.a))]
             UserForm,
 
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
-            [Title("User Progress Bar")]
+            [Title("B - User Progress Bar")]
+            [Icon(typeof(Resources), nameof(Resources.b))]
             UserProgressBar,
 
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
-            [Title("Operation In Background Thread (Task)")]
+            [Title("C - Operation In Background Thread (Task)")]
+            [Icon(typeof(Resources), nameof(Resources.c))]
             Task,
 
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
-            [Title("Do Events In Main Thread")]
+            [Title("D - Do Events In Main Thread")]
+            [Icon(typeof(Resources), nameof(Resources.d))]
             DoEvents,
 
             [CommandItemInfo(swWorkspaceTypes_e.Part)]
-            [Title("User Form In Background Thread")]
+            [Title("E - User Form In Background Thread")]
+            [Icon(typeof(Resources), nameof(Resources.e))]
             Thread
         }
 
