@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeasurementSurveying", "MeasurementSurveying\MeasurementSurveying.csproj", "{64C1331B-6DD1-4540-B3D7-AA14FB0635AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64C1331B-6DD1-4540-B3D7-AA14FB0635AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C1331B-6DD1-4540-B3D7-AA14FB0635AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C1331B-6DD1-4540-B3D7-AA14FB0635AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C1331B-6DD1-4540-B3D7-AA14FB0635AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83A50F20-71DE-4B50-A122-07D6B3B86635}
+	EndGlobalSection
+EndGlobal
