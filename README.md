@@ -1,4 +1,4 @@
-#SOLIDWORKS, SOLIDWORKS PDM, SOLIDWORKS Document Manager, eDrawings API examples
+# SOLIDWORKS, SOLIDWORKS PDM, SOLIDWORKS Document Manager, eDrawings API examples
 
 ## Example projects for [SwEx Framework](https://www.codestack.net/labs/solidworks/swex/)
 
@@ -50,6 +50,39 @@ Demonstration of alternative approach to create SOLIDWORKS add-in API. Running o
 
 ### Issues Manager
 [![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/issues-manager/csharp)
-[![VB.NET Source Code](https://img.shields.io/badge/src-VB.NET-blue.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/issues-manager//vb-net)
+[![VB.NET Source Code](https://img.shields.io/badge/src-VB.NET-blue.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/add-in/issues-manager/vb-net)
 
 Demonstration of using of 3rd party storage store and streams to manage issues associated with documents. WPF interface is added to task pane allowing to view and edit issues.
+
+### Insert Linked Geometry
+
+[![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/macro-feature/link-external-file/csharp)
+[![VB.NET Source Code](https://img.shields.io/badge/src-VB.NET-blue.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/swex/macro-feature/link-external-file/vb-net)
+
+Demonstration of using macro feature to create a geometry linked to external file with an ability to regenerate the geometry when the source file is updated.
+
+## eDrawings API Examples
+
+### Batch Export To PDF
+
+[![VB.NET Source Code](https://img.shields.io/badge/src-VB.NET-blue.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/BatchExportPdf)
+
+Tool to export SOLIDWORKS drawings to PDF by printing them to PDF printer via eDrawings
+
+### eDrawings Windows Forms Host
+
+[![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/eDrawingsWinFormsHost)
+
+Demonstration hosting of eDrawings control in the Windows Forms Application
+
+### eDrawings Windows Presentation Foundation (WPF) Host
+
+[![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/eDrawingsWpfHost)
+
+Demonstration hosting of eDrawings control in the Windows Presentation Foundation (WPF)
+
+### Measurement Surveying
+
+[![C# Source Code](https://img.shields.io/badge/src-C%23-yellow.svg)](https://github.com/codestackdev/solidworks-api-examples/tree/master/edrawings-api/MeasurementSurveying)
+
+Demonstration of eDrawings Markup API to collect the measurement data
