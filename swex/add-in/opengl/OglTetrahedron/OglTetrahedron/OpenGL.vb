@@ -2,7 +2,7 @@
 'Render Tetrahedron And Handle View Display Modes
 'Copyright(C) 2019 www.codestack.net
 'License: https://github.com/codestackdev/solidworks-api-examples/blob/master/LICENSE
-'Product URL: https://www.codestack.net/solidworks-api/adornment/open-gl/display-mode-tetrahedron/
+'Product URL: https://www.codestack.net/solidworks-api/adornment/opengl/display-mode-tetrahedron/
 '**********************
 
 Imports System.Runtime.InteropServices

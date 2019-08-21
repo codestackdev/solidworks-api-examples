@@ -2,7 +2,7 @@
 //Render Box Grid With Transparency
 //Copyright(C) 2019 www.codestack.net
 //License: https://github.com/codestackdev/solidworks-api-examples/blob/master/LICENSE
-//Product URL: https://www.codestack.net/solidworks-api/adornment/open-gl/box-grid-transparency/
+//Product URL: https://www.codestack.net/solidworks-api/adornment/opengl/box-grid-transparency/
 //**********************
 
 using System.Runtime.InteropServices;

@@ -2,7 +2,7 @@
 //Import XAML File And Render Using VBO
 //Copyright(C) 2019 www.codestack.net
 //License: https://github.com/codestackdev/solidworks-api-examples/blob/master/LICENSE
-//Product URL: https://www.codestack.net/solidworks-api/adornment/open-gl/vbo-xaml-importer/
+//Product URL: https://www.codestack.net/solidworks-api/adornment/opengl/vbo-xaml-importer/
 //**********************
 
 using CodeStack.SwEx.AddIn;
