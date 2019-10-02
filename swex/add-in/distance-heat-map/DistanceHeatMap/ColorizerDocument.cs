@@ -1,4 +1,5 @@
-﻿using CodeStack.SwEx.AddIn.Core;
+﻿using CodeStack.SwEx.AddIn.Base;
+using CodeStack.SwEx.AddIn.Core;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
@@ -7,24 +8,26 @@ using System.Text;
 
 namespace CodeStack.SwEx.AddIn.Examples.DistanceHeatMap
 {
-    public class ColorizerDocument : DocumentHandler
+    public class ColorizerDocument : IDocumentHandler
     {
         private DistanceColorContour m_Contour;
+        private IModelDoc2 m_Model;
 
-        public override void OnInit()
+        public void Init(ISldWorks app, IModelDoc2 model)
         {
-            if (Model is IPartDoc)
+            if (model is IPartDoc)
             {
-                m_Contour = new DistanceColorContour(Model as IPartDoc);
-                Model.Extension.InstallModelColorizer(m_Contour);
+                m_Contour = new DistanceColorContour(model as IPartDoc);
+                m_Model = model;
+                m_Model.Extension.InstallModelColorizer(m_Contour);
             }
         }
 
-        public override void OnDestroy()
+        public void Dispose()
         {
             if (m_Contour != null)
             {
-                Model.Extension.RemoveModelColorizer(m_Contour);
+                m_Model.Extension.RemoveModelColorizer(m_Contour);
             }
         }
     }

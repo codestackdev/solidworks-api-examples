@@ -3,6 +3,7 @@ Imports CodeStack.SwEx.AddIn.Enums
 Imports CodeStack.SwEx.AddIn.Examples.SwExportComponent.My.Resources
 Imports System.ComponentModel
 Imports SolidWorks.Interop.swconst
+Imports CodeStack.SwEx.Common.Attributes
 
 <Title(GetType(Resources), NameOf(Resources.ToolbarTitle))>
 <Description("Exports selected component to neutral format")>

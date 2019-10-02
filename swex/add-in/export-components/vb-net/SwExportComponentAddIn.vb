@@ -44,15 +44,15 @@ Public Class SwExportComponentAddIn
                 Throw New NotSupportedException()
         End Select
 
-        Dim comp = TryCast(m_App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1),
-                IComponent2)
+		Dim comp = TryCast(App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1),
+				IComponent2)
 
-        If comp IsNot Nothing Then
-            Dim filePath = Path.Combine(Path.GetDirectoryName(
-                                            m_App.IActiveDoc2.GetPathName()),
-                                            "Export",
-                                            Path.GetFileNameWithoutExtension(comp.GetPathName()) & ext)
-            comp.Export(filePath)
+		If comp IsNot Nothing Then
+			Dim filePath = Path.Combine(Path.GetDirectoryName(
+											App.IActiveDoc2.GetPathName()),
+											"Export",
+											Path.GetFileNameWithoutExtension(comp.GetPathName()) & ext)
+			comp.Export(filePath)
         Else
             Debug.Assert(False, "Command should be disabled")
             Throw New NullReferenceException("Component")
@@ -66,11 +66,11 @@ Public Class SwExportComponentAddIn
         'command (i.e. in this case if the active model Is no an assembly the state of the button will be
         'DeselectDisable. So we only need to verify if the state is DeselectEnable
         If state = CommandItemEnableState_e.DeselectEnable Then
-            If m_App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1) Is Nothing Then
-                'if no components selected deselect and disable the command
-                state = CommandItemEnableState_e.DeselectDisable
-            End If
-        End If
+			If App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1) Is Nothing Then
+				'if no components selected deselect and disable the command
+				state = CommandItemEnableState_e.DeselectDisable
+			End If
+		End If
 
     End Sub
 

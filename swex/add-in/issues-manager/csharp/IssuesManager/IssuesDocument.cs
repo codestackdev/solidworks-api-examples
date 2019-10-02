@@ -6,6 +6,7 @@
 //**********************
 
 using CodeStack.SwEx.AddIn.Core;
+using CodeStack.SwEx.AddIn.Enums;
 using CodeStack.SwEx.AddIn.Examples.IssuesManager.Models;
 using CodeStack.SwEx.AddIn.Examples.IssuesManager.ViewModels;
 using SolidWorks.Interop.sldworks;
@@ -13,8 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
 {
@@ -25,10 +24,28 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
         private const string ISSUES_SUMMARIES_STREAM_NAME = "Summaries";
 
         public event Action<IssuesVM> ShowIssues;
-        public event Action Destroyed;
 
         private IssuesVM m_IssuesVm;
-        
+
+        public override void OnInit()
+        {
+            this.Access3rdPartyData += OnAccess3rdPartyData;
+        }
+
+        private void OnAccess3rdPartyData(DocumentHandler docHandler, Enums.Access3rdPartyDataState_e state)
+        {
+            switch (state)
+            {
+                case Access3rdPartyDataState_e.StorageRead:
+                    LoadIssuesFromStorageStore();
+                    break;
+
+                case Access3rdPartyDataState_e.StorageWrite:
+                    SaveIssuesToStorageStore();
+                    break;
+            }
+        }
+
         public override void OnActivate()
         {
             ShowIssues?.Invoke(m_IssuesVm);
@@ -44,7 +61,7 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
             m_IssuesVm.RemoveActiveIssue();
         }
 
-        public override void OnLoadFromStorageStore()
+        private void LoadIssuesFromStorageStore()
         {
             IEnumerable<int> issuesIds = null;
             IssueInfo[] issueInfos = null;
@@ -124,7 +141,7 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
             }
         }
 
-        public override void OnSaveToStorageStore()
+        private void SaveIssuesToStorageStore()
         {
             var loadedIssues = m_IssuesVm.Issues.Where(i => i.IsLoaded);
 
@@ -167,7 +184,7 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
 
         public override void OnDestroy()
         {
-            Destroyed?.Invoke();
+            this.Access3rdPartyData -= OnAccess3rdPartyData;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
+using CodeStack.SwEx.Common.Attributes;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Runtime.InteropServices;
@@ -13,10 +14,10 @@ namespace CodeStack.GeometryHelper
         private IGeometryHelperApiObject m_ApiObject;
         private GeometryHelperService m_GeometryService;
 
-        [SwEx.Common.Attributes.Title("Geometry Helper")]
+        [Title("Geometry Helper")]
         public enum Commands_e
         {
-            [SwEx.Common.Attributes.Title("Get Faces Count")]
+            [Title("Get Faces Count")]
             GetFacesCount
         }
 

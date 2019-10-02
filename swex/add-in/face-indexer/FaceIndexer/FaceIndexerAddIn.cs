@@ -1,5 +1,6 @@
 ﻿using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
+using CodeStack.SwEx.Common.Attributes;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -18,7 +19,7 @@ namespace CodeStack.FaceIndexer
         private readonly List<KeyValuePair<IAssemblyDoc, IFaceIndexerCallback>> m_ProcessingQueue
             = new List<KeyValuePair<IAssemblyDoc, IFaceIndexerCallback>>();
 
-        [SwEx.Common.Attributes.Title("Face Indexer")]
+        [Title("Face Indexer")]
         public enum Commands_e
         {
             [CommandItemInfo(SwEx.AddIn.Enums.swWorkspaceTypes_e.Assembly)]

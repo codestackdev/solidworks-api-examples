@@ -7,6 +7,7 @@
 
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Base;
+using CodeStack.SwEx.AddIn.Core;
 using CodeStack.SwEx.AddIn.Examples.IssuesManager.Properties;
 using CodeStack.SwEx.AddIn.Examples.IssuesManager.ViewModels;
 using CodeStack.SwEx.AddIn.Examples.IssuesManager.Views;
@@ -81,9 +82,8 @@ namespace CodeStack.SwEx.AddIn.Examples.IssuesManager
             issuesDoc.Destroyed += OnIssuesDocDestroyed;
             issuesDoc.ShowIssues += OnShowIssues;
         }
-
-        //TODO: simplify when issue #24 is implemented
-        private void OnIssuesDocDestroyed()
+        
+        private void OnIssuesDocDestroyed(DocumentHandler docHandler)
         {
             //destroying last document
             if (App.IFrameObject().GetModelWindowCount() == 1)

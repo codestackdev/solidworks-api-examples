@@ -1,6 +1,7 @@
 ﻿using CodeStack.SwEx.AddIn;
 using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Enums;
+using CodeStack.SwEx.Common.Attributes;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -9,11 +10,11 @@ using System.Runtime.InteropServices;
 
 namespace CodeStack.Examples.CreateGeometryAddIn
 {
-    [SwEx.Common.Attributes.Title("Create Geometry")]
+    [Title("Create Geometry")]
     public enum Commans_e
     {
         [CommandItemInfo(swWorkspaceTypes_e.Part)]
-        [SwEx.Common.Attributes.Title("Create Cylinder")]
+        [Title("Create Cylinder")]
         CreateCylinder
     }
 

@@ -1,6 +1,7 @@
 ﻿using CodeStack.SwEx.AddIn.Attributes;
 using CodeStack.SwEx.AddIn.Enums;
 using CodeStack.SwEx.AddIn.Examples.SwExportComponent.Properties;
+using CodeStack.SwEx.Common.Attributes;
 using SolidWorks.Interop.swconst;
 using System.ComponentModel;
 

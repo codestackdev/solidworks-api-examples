@@ -50,12 +50,12 @@ namespace CodeStack.SwEx.AddIn.Examples.SwExportComponent
                     throw new NotSupportedException();
             }
 
-            var comp = m_App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1) as IComponent2;
+            var comp = App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1) as IComponent2;
 
             if (comp != null)
             {
                 var filePath = Path.Combine(
-                        Path.GetDirectoryName(m_App.IActiveDoc2.GetPathName()),
+                        Path.GetDirectoryName(App.IActiveDoc2.GetPathName()),
                         "Export",
                         Path.GetFileNameWithoutExtension(comp.GetPathName()) + ext);
 
@@ -75,7 +75,7 @@ namespace CodeStack.SwEx.AddIn.Examples.SwExportComponent
             //DeselectDisable. So we only need to verify if the state is DeselectEnable
             if (state == CommandItemEnableState_e.DeselectEnable)
             {
-                if (m_App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1) == null)
+                if (App.IActiveDoc2.ISelectionManager.GetSelectedObjectsComponent4(1, -1) == null)
                 {
                     //if no components selected deselect and disable the command
                     state = CommandItemEnableState_e.DeselectDisable;

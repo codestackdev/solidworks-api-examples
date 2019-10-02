@@ -7,6 +7,7 @@
 
 Imports System.Xml.Serialization
 Imports CodeStack.SwEx.AddIn.Core
+Imports CodeStack.SwEx.AddIn.Enums
 Imports SolidWorks.Interop.sldworks
 
 Public Class IssuesDocument
@@ -17,6 +18,10 @@ Public Class IssuesDocument
 	Public Property IssuesControl As IssuesControl
 
 	Dim m_Issues As ObjectModel.ObservableCollection(Of Issue)
+
+	Public Overrides Sub OnInit()
+		AddHandler Me.Access3rdPartyData, AddressOf OnAccess3rdPartyData
+	End Sub
 
 	Public Overrides Sub OnActivate()
 		IssuesControl.DataContext = m_Issues
@@ -34,7 +39,16 @@ Public Class IssuesDocument
 		m_Issues.Add(newIssue)
 	End Sub
 
-	Public Overrides Sub OnLoadFromStream()
+	Private Sub OnAccess3rdPartyData(docHandler As DocumentHandler, state As Access3rdPartyDataState_e)
+		Select Case state
+			Case Access3rdPartyDataState_e.StreamRead
+				LoadIssuesFromStream()
+			Case Access3rdPartyDataState_e.StreamWrite
+				SaveIssuesToStream()
+		End Select
+	End Sub
+
+	Private Sub LoadIssuesFromStream()
 
 		Using streamHandler = Model.Access3rdPartyStream(STREAM_NAME, False)
 			If streamHandler.Stream IsNot Nothing Then
@@ -51,11 +65,15 @@ Public Class IssuesDocument
 
 	End Sub
 
-	Public Overrides Sub OnSaveToStream()
+	Private Sub SaveIssuesToStream()
 		Using streamHandler = Model.Access3rdPartyStream(STREAM_NAME, True)
 			Dim xmlSer = New XmlSerializer(GetType(ObjectModel.ObservableCollection(Of Issue)))
 			xmlSer.Serialize(streamHandler.Stream, m_Issues)
 		End Using
+	End Sub
+
+	Public Overrides Sub OnDestroy()
+		RemoveHandler Me.Access3rdPartyData, AddressOf OnAccess3rdPartyData
 	End Sub
 
 End Class
