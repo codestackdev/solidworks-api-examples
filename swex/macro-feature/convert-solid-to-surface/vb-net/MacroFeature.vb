@@ -1,10 +1,11 @@
-﻿Imports CodeStack.SwEx.MacroFeature.Attributes
+﻿Imports CodeStack.SwEx.Common.Attributes
+Imports CodeStack.SwEx.MacroFeature.Attributes
 Imports CodeStack.SwEx.MacroFeature.Base
 Imports CodeStack.SwEx.MacroFeature.Examples.ConvertSolidToSurface.My.Resources
 Imports SolidWorks.Interop.sldworks
 
 <Icon(GetType(Resources), NameOf(Resources.solid_to_surface))>
-<Options("SolidToSurface")>
+<Title(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceFeatureName))>
 Public Class MacroFeature
 	Inherits MacroFeatureEx(Of DataModel)
 

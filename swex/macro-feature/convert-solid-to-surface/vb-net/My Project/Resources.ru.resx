@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConvertSolidToSurfaceDescription" xml:space="preserve">
-    <value>Converts solid bodies into surface bodies</value>
+    <value>Преобразует твердые тела в поверхности</value>
   </data>
   <data name="ConvertSolidToSurfaceFeatureName" xml:space="preserve">
-    <value>SolidToSurface</value>
+    <value>ТвердоеТелоВПоверхность</value>
   </data>
   <data name="ConvertSolidToSurfaceTitle" xml:space="preserve">
-    <value>Convert Solid To Surface</value>
+    <value>Преобразовать Твердое Тело в Поверхность</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="solid_body" type="System.Resources.ResXFileRef, System.Windows.Forms">

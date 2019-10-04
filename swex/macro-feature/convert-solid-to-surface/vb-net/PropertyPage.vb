@@ -30,7 +30,7 @@ Public Class PropertyPage
 		m_Model = model
 		m_Data = data
 
-		m_Page = New PropertyManagerPageEx(Of PropertyPageHandler, DataModel)(m_Data, m_App)
+		m_Page = New PropertyManagerPageEx(Of PropertyPageHandler, DataModel)(m_App)
 		AddHandler m_Page.Handler.Closed, AddressOf OnPageClosed
 		AddHandler m_Page.Handler.Closing, AddressOf OnClosing
 	End Sub
@@ -42,7 +42,7 @@ Public Class PropertyPage
 	End Sub
 
 	Public Sub Show()
-		m_Page.Show()
+		m_Page.Show(m_Data)
 	End Sub
 
 	Private Sub OnPageClosed(reason As swPropertyManagerPageCloseReasons_e)

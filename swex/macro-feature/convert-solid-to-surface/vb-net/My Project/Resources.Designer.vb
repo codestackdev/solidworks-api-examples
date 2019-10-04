@@ -61,6 +61,33 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Converts solid bodies into surface bodies.
+        '''</summary>
+        Friend ReadOnly Property ConvertSolidToSurfaceDescription() As String
+            Get
+                Return ResourceManager.GetString("ConvertSolidToSurfaceDescription", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to SolidToSurface.
+        '''</summary>
+        Friend ReadOnly Property ConvertSolidToSurfaceFeatureName() As String
+            Get
+                Return ResourceManager.GetString("ConvertSolidToSurfaceFeatureName", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Convert Solid To Surface.
+        '''</summary>
+        Friend ReadOnly Property ConvertSolidToSurfaceTitle() As String
+            Get
+                Return ResourceManager.GetString("ConvertSolidToSurfaceTitle", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property solid_body() As System.Drawing.Bitmap

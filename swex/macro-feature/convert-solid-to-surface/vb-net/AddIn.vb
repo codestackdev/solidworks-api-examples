@@ -1,14 +1,17 @@
 ﻿Imports System.Runtime.InteropServices
 Imports CodeStack.SwEx.AddIn
 Imports CodeStack.SwEx.AddIn.Attributes
+Imports CodeStack.SwEx.Common.Attributes
 Imports CodeStack.SwEx.MacroFeature.Examples.ConvertSolidToSurface.My.Resources
 Imports SolidWorks.Interop.sldworks
 
 <Icon(GetType(Resources), NameOf(Resources.solid_to_surface))>
-<Title("Convert Solid To Surface")>
+<Title(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceTitle))>
+<Summary(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceDescription))>
 Public Enum Commands_e
 	<Icon(GetType(Resources), NameOf(Resources.solid_to_surface))>
-	<Title("Convert Solid To Surface")>
+	<Title(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceTitle))>
+	<Summary(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceDescription))>
 	<CommandItemInfo(True, True, Enums.swWorkspaceTypes_e.Part, True)>
 	ConvertSolidToSurface
 End Enum
@@ -16,6 +19,8 @@ End Enum
 <ComVisible(True)>
 <Guid("E7210006-B2FD-488C-86B1-EADDD03EDC2C")>
 <AutoRegister>
+<Title(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceTitle))>
+<Summary(GetType(Resources), NameOf(Resources.ConvertSolidToSurfaceDescription))>
 Public Class AddIn
 	Inherits SwAddInEx
 
