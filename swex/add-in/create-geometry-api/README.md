@@ -1,0 +1,1 @@
+[More Information](https://www.codestack.net/solidworks-api/getting-started/inter-process-communication/invoke-add-in-functions/via-add-in-object/)
