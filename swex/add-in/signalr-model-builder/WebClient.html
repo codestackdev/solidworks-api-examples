@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>SOLIDWORKS Web Client</title>
+</head>
+<body>
+	<div class="container">
+		<input type="text" id="size" />
+		<input type="button" id="build" value="Build" />
+		<p id="status">Status</p>
+	</div>
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js"></script>
+	<script src="http://localhost:8080/ModelBuilder/signalr/hubs"></script>
+
+	<script type="text/javascript">
+        $(function () {
+        	$.connection.hub.url = "http://localhost:8080/ModelBuilder/signalr";
+
+        	var builder = $.connection.ModelBuilder;
+
+        	builder.client.updateStatus = function (totalModelsBuilt) {
+        		$('#status').text("Total Models Built: " + totalModelsBuilt);
+        	};
+
+        	builder.client.SendResult = function (mass) {
+        		alert("Mass: " + mass);
+        	};
+
+        	$.connection.hub.start()
+				.done(function () {
+					$('#build').click(function () {
+						var size = $('#size').val();
+						builder.server.build(size, size, size);
+					})
+				});
+		});
+	</script>
+</body>
+</html>
